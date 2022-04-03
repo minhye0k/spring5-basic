@@ -1,6 +1,7 @@
 package main;
 
 import config.AppCtx;
+import jdk.nashorn.internal.runtime.Version;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.*;
@@ -35,6 +36,9 @@ public class MainForSpring {
                 continue;
             } else if (command.startsWith("info ")){
                 processInfoCommand(command.split(" "));
+                continue;
+            } else if(command.equals("version")){
+                processVersionCommand();
                 continue;
             }
             printHelp();
@@ -98,6 +102,12 @@ public class MainForSpring {
         MemberInfoPrinter infoPrinter =
                 ctx.getBean("infoPrinter", MemberInfoPrinter.class);
         infoPrinter.printMemberInfo(arg[1]);
+    }
+
+    private static void processVersionCommand() {
+        VersionPrinter versionPrinter =
+                ctx.getBean("versionPrinter", VersionPrinter.class);
+        versionPrinter.print();
     }
 
     public static void printHelp() {

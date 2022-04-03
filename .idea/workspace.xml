@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5dd4a176-4cfc-453a-ab95-4435153105b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/assembler/Assembler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/config/AppCtx.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/main/MainForAssembler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/main/MainForSpring.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/spring/MemberInfoPrinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/spring/MemberListPrinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/spring/MemberPrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/config/AppConf1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/config/AppConf2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/main/MainForSpring2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/spring/VersionPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring5-chap03/src/main/java/spring/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/spring/MemberDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring5-chap03/src/main/java/config/AppCtx.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/config/AppCtx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring5-chap03/src/main/java/main/MainForSpring.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring5-chap03/src/main/java/main/MainForSpring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring5-chap03/target/classes/config/AppCtx.class" beforeDir="false" afterPath="$PROJECT_DIR$/spring5-chap03/target/classes/config/AppCtx.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring5-chap03/target/classes/main/MainForSpring.class" beforeDir="false" afterPath="$PROJECT_DIR$/spring5-chap03/target/classes/main/MainForSpring.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +61,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.MainForSpring">
+  <component name="RunManager" selected="Application.MainForSpring2">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="chap02.Main" />
       <module name="spring5-chap02" />
@@ -101,8 +101,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainForSpring2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.MainForSpring2" />
+      <module name="spring5-chap03" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainForSpring2" />
         <item itemvalue="Application.MainForSpring" />
         <item itemvalue="Application.MainForAssembler" />
         <item itemvalue="Application.Main" />
@@ -120,7 +134,7 @@
       <workItem from="1647163788384" duration="3842000" />
       <workItem from="1647758643395" duration="8485000" />
       <workItem from="1647824695569" duration="599000" />
-      <workItem from="1648960178554" duration="6058000" />
+      <workItem from="1648960178554" duration="8431000" />
     </task>
     <servers />
   </component>
