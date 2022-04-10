@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring5-chap02" />
         <module name="spring5-chap03" />
+        <module name="spring5-chap04" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

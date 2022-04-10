@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>spring5</groupId>
-    <artifactId>spring5-chap03</artifactId>
+    <artifactId>spring5-chap04</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
