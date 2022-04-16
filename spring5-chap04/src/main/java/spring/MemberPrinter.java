@@ -1,14 +1,15 @@
 package spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
 public class MemberPrinter {
-    @Autowired(required = false)
     private DateTimeFormatter dateTimeFormatter;
+
+    public MemberPrinter() {
+        dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+    }
 
     public void print(Member member) {
         if (dateTimeFormatter == null) {
@@ -24,12 +25,8 @@ public class MemberPrinter {
         }
     }
 
-    @Autowired
-    public void setDateTimeFormatter(Optional<DateTimeFormatter> formatterOpt){
-        if(formatterOpt.isPresent()) {
-            this.dateTimeFormatter = formatterOpt.get();
-        }else {
-            this.dateTimeFormatter = null;
-        }
+    @Autowired(required = false)
+    public void setDateTimeFormatter(DateTimeFormatter dateTimeFormatter) {
+        this.dateTimeFormatter = dateTimeFormatter;
     }
 }
