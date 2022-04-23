@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class ExeTimeAspect {
 
     @Pointcut("execution(public * chap07..*(..))")
-    private void publicTarget() {
+    public void publicTarget() {
     }
 
     @Around("publicTarget()")
