@@ -13,7 +13,7 @@ public class AppCtx {
     public DataSource dataSource() {
         DataSource ds = new DataSource();
         ds.setDriverClassName("org.mariadb.jdbc.Driver");
-        ds.setUrl("jdbc:mariadb://localhost/spring5fs?characterEncoding=utf8");
+        ds.setUrl("jdbc:mariadb://localhost:3306/spring5fs?characterEncoding=utf8");
         ds.setUsername("spring5");
         ds.setPassword("spring5");
         ds.setInitialSize(2); // 초기 커넥션 개수
