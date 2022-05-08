@@ -41,8 +41,9 @@ public class Member {
         return registerDateTime;
     }
 
-    public void changePassword(String oldPassword, String newPassword){
-        if(!password.equals(oldPassword)){
+
+    public void changePassword(String oldPassword, String newPassword) {
+        if (!password.equals(oldPassword)) {
             throw new WrongIdPasswordException();
         }
         this.password = newPassword;
