@@ -3,8 +3,7 @@ package controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RegisterController {
@@ -14,9 +13,8 @@ public class RegisterController {
     }
 
     @PostMapping("/register/step2")
-    public String handleStep2(HttpServletRequest request) {
-        String agreeParam = request.getParameter("agree");
-        if (agreeParam == null || !agreeParam.equals("true")) {
+    public String handleStep2(@RequestParam(value = "agree", defaultValue = "false") Boolean agree) {
+        if (!agree) {
             return "register/step1";
         }
         return "register/step2";
