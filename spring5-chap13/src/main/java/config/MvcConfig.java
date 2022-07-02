@@ -1,5 +1,6 @@
 package config;
 
+import interceptor.AuthCheckInterceptor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +34,17 @@ public class MvcConfig implements WebMvcConfigurer {
         ms.setBasenames("message.label");
         ms.setDefaultEncoding("UTF-8");
         return ms;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authCheckInterceptor())
+                .addPathPatterns("/edit/**");
+    }
+
+    @Bean
+    public AuthCheckInterceptor authCheckInterceptor() {
+        return new AuthCheckInterceptor();
     }
 
 }
