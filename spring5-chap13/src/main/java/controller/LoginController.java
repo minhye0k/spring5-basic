@@ -9,6 +9,8 @@ import spring.AuthInfo;
 import spring.AuthService;
 import spring.WrongIdPasswordException;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {
@@ -24,7 +26,7 @@ public class LoginController {
     }
 
     @PostMapping
-    public String submit(LoginCommand loginCommand, Errors errors) {
+    public String submit(LoginCommand loginCommand, Errors errors, HttpSession httpSession) {
         new LoginCommandValidator().validate(loginCommand, errors);
         if (errors.hasErrors()) {
             return "login/loginForm";
@@ -35,6 +37,8 @@ public class LoginController {
                     loginCommand.getEmail(),
                     loginCommand.getPassword()
             );
+
+            httpSession.setAttribute("authInfo", authInfo);
 
             return "login/loginSuccess";
         } catch (WrongIdPasswordException e) {
