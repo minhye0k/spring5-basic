@@ -7,12 +7,25 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class MemberDao {
     private JdbcTemplate jdbcTemplate;
+    private RowMapper<Member> memRowMapper =
+            (resultSet, i) -> {
+                Member member = new Member(
+                        resultSet.getString("EMAIL"),
+                        resultSet.getString("PASSWORD"),
+                        resultSet.getString("NAME"),
+                        resultSet.getTimestamp("REGDATE").toLocalDateTime());
+                member.setId(resultSet.getLong("ID"));
+                return member;
+            };
 
     public MemberDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -21,18 +34,7 @@ public class MemberDao {
     public Member selectByEmail(String email) {
         List<Member> results = jdbcTemplate.query(
                 "select * from MEMBER where EMAIL = ?",
-                new RowMapper<Member>() {
-                    @Override
-                    public Member mapRow(ResultSet resultSet, int i) throws SQLException {
-                        Member member = new Member(
-                                resultSet.getString("EMAIL"),
-                                resultSet.getString("PASSWORD"),
-                                resultSet.getString("NAME"),
-                                resultSet.getTimestamp("REGDATE").toLocalDateTime());
-                        member.setId(resultSet.getLong("ID"));
-                        return member;
-                    }
-                }, email);
+                memRowMapper, email);
         return results.isEmpty() ? null : results.get(0);
     }
 
@@ -66,16 +68,8 @@ public class MemberDao {
 
     public List<Member> selectAll() {
         List<Member> results = jdbcTemplate.query(
-                "select * from MEMBER",
-                (resultSet, i) -> {
-                    Member member = new Member(
-                            resultSet.getString("EMAIL"),
-                            resultSet.getString("PASSWORD"),
-                            resultSet.getString("NAME"),
-                            resultSet.getTimestamp("REGDATE").toLocalDateTime());
-                    member.setId(resultSet.getLong("ID"));
-                    return member;
-                });
+                "select * from MEMBER", memRowMapper
+        );
 
         return results;
     }
@@ -85,18 +79,18 @@ public class MemberDao {
         List<Member> results = jdbcTemplate.query(
                 "select * from MEMBER where REGDATE between ? and ? " +
                         "order by REGDATE desc",
-                (resultSet, i) -> {
-                    Member member = new Member(
-                            resultSet.getString("EMAIL"),
-                            resultSet.getString("PASSWORD"),
-                            resultSet.getString("NAME"),
-                            resultSet.getTimestamp("REGDATE").toLocalDateTime()
-                    );
-                    member.setId(resultSet.getLong("ID"));
-                    return member;
-                }, from, to
+                memRowMapper, from, to
         );
         return results;
+    }
+
+    public Member selectById(Long memId) {
+        List<Member> results = jdbcTemplate.query(
+                "select * from MEMBER where ID = ?",
+                memRowMapper, memId
+        );
+
+        return results.isEmpty() ? null : results.get(0);
     }
 
     public int count() {
